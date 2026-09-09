@@ -22,7 +22,6 @@ RUN adduser -D -H chisel
 
 USER chisel
 
-EXPOSE 8080
-
-ENTRYPOINT ["chisel"]
+ENTRYPOINT ["chisel", "server"] 
+CMD ["--port", "8080", "--auth", "admin:admin"]
 
