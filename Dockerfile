@@ -22,4 +22,4 @@ RUN adduser -D -H chisel
 USER chisel
 
 ENTRYPOINT ["sh", "-c"]
-CMD ["exec chisel server --port \"$PORT\" --auth \"admin:$CHISEL_PASSWORD\" --reverse"]
+CMD ["exec chisel server --host 0.0.0.0 --port \"$PORT\" --auth \"admin:$CHISEL_PASSWORD\" --reverse"]
