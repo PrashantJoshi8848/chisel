@@ -6,8 +6,7 @@ RUN apk add --no-cache git
 
 RUN git clone --depth 1 https://github.com/jpillora/chisel.git .
 
-RUN go version && \
-    CGO_ENABLED=0 GOOS=linux go build \
+RUN CGO_ENABLED=0 GOOS=linux go build \
     -trimpath \
     -ldflags="-s -w" \
     -o /chisel .
@@ -22,6 +21,5 @@ RUN adduser -D -H chisel
 
 USER chisel
 
-ENTRYPOINT ["chisel", "server"] 
+ENTRYPOINT ["sh", "-c"]
 CMD ["exec chisel server --port \"$PORT\" --auth \"admin:$CHISEL_PASSWORD\" --reverse"]
-
